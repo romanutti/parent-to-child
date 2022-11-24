@@ -7,19 +7,14 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./parent.component.css'],
 })
 export class ParentComponent implements OnInit {
-  private state = new BehaviorSubject({
-    enabled: false,
-  });
-  public eventStream$ = this.state.asObservable();
+  private enabled = new BehaviorSubject<Boolean>(true);
+  public eventStream$ = this.enabled.asObservable();
 
   constructor() {}
 
   ngOnInit() {}
 
   update() {
-    let state = this.state.value;
-    state.enabled = !state.enabled;
-
-    this.state.next(state);
+    this.enabled.next(!this.enabled.value);
   }
 }

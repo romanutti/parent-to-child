@@ -1,1 +1,3 @@
-<div>test</div>
+<ng-container *ngIf="eventStream$ | async as enabled">
+  <div *ngIf="enabled">Enabled</div>
+</ng-container>
